@@ -1,0 +1,57 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fnil\fcharset0 Verdana;\f1\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red55\green55\blue55;\red255\green255\blue255;\red76\green76\blue76;
+\red26\green26\blue26;\red246\green246\blue246;\red12\green96\blue165;}
+{\*\expandedcolortbl;;\cssrgb\c27843\c27843\c27843;\cssrgb\c100000\c100000\c100000;\cssrgb\c36863\c36863\c36863;
+\cssrgb\c13333\c13333\c13333;\cssrgb\c97255\c97255\c97255;\cssrgb\c0\c45882\c70588;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl453\sa200\partightenfactor0
+
+\f0\fs32\fsmilli16200 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Problem 3 - Using Bisection Search to Make the Program Faster\
+\pard\pardeftab720\sl260\partightenfactor0
+
+\fs21 \cf4 \strokec4 20.0 points possible (graded)\
+\pard\pardeftab720\sl380\sa453\partightenfactor0
+
+\fs32 \cf5 \strokec5 You'll notice that in Problem 2, your monthly payment had to be a multiple of $10. Why did we make it that way? You can try running your code locally so that the payment can be any dollar and cent amount (in other words, the monthly payment is a multiple of $0.01). Does your code still work? It should, but you may notice that your code runs more slowly, especially in cases with very large balances and interest rates. (Note: when your code is running on our servers, there are limits on the amount of computing time each submission is allowed, so your observations from running this experiment on the grading system might be limited to an error message complaining about too much time taken.)\cb1 \
+\cb3 Well then, how can we calculate a more accurate fixed monthly payment than we did in Problem 2 without running into the problem of slow code? We can make this program run\'a0faster using a technique introduced in lecture - bisection search!\cb1 \
+\cb3 The following variables contain values as described below:\cb1 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl448\sa453\partightenfactor0
+\ls1\ilvl0
+\f1\fs28\fsmilli14400 \cf5 \cb6 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	1.	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 balance
+\f0\fs32 \cb3 \'a0- the outstanding balance on the credit card\cb1 \uc0\u8232 \
+\ls1\ilvl0
+\f1\fs28\fsmilli14400 \cb6 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2.	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 annualInterestRate
+\f0\fs32 \cb3 \'a0- annual interest rate as a decimal\cb1 \uc0\u8232 \
+\pard\pardeftab720\sl380\sa453\partightenfactor0
+\cf5 \cb3 To recap the problem: we are searching for the smallest monthly payment such that we can pay off the entire balance within a year. What is a reasonable\'a0
+\b lower bound
+\b0 \'a0for this payment value? $0 is the obvious anwer, but you can do better than that. If there was no interest, the debt can be paid off by monthly payments of one-twelfth of the original balance, so we must pay at least this much every month. One-twelfth of the original balance is a good lower bound.\cb1 \
+\cb3 What is a good\'a0
+\b upper bound
+\b0 ? Imagine that instead of paying monthly, we paid off the entire balance at the end of the year. What we ultimately pay must be greater than what we would've paid in monthly installments, because the interest was compounded on the balance we didn't pay off each month. So a good upper bound for the monthly payment would be one-twelfth of the balance,\'a0
+\i after
+\i0 \'a0having its interest compounded monthly for an entire year.\cb1 \
+\cb3 In short:\cb1 \
+\pard\pardeftab720\sl380\sa453\partightenfactor0
+
+\b \cf5 \cb3 Monthly interest rate
+\b0 \'a0= (Annual interest rate) / 12.0\cb1 \uc0\u8232 
+\b \cb3 Monthly payment lower bound
+\b0 \'a0= Balance / 12\cb1 \uc0\u8232 
+\b \cb3 Monthly payment upper bound
+\b0 \'a0= (Balance x (1 + Monthly interest rate)
+\fs24 12
+\fs32 ) / 12.0\cb1 \
+\pard\pardeftab720\sl380\sa453\partightenfactor0
+\cf5 \cb3 Write a program that uses these bounds and bisection search (for more info check out\'a0{\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Bisection_method"}}{\fldrslt \cf7 \strokec7 the Wikipedia page on bisection search}}) to find the smallest monthly payment\'a0
+\i to the cent
+\i0 \'a0(no more multiples of $10) such that we can pay off the debt within a year. Try it out with large inputs, and notice how fast it is (try the same large inputs in your solution to Problem 2 to compare!). Produce the same return value as you did in Problem 2.\cb1 \
+\cb3 Note that if you do not use bisection search, your code will not run - your code only has 30 seconds to run on our servers.\cb1 \
+}
