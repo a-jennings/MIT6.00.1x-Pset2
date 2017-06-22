@@ -5,22 +5,34 @@ annualInterestRate = 0.2
 
 
 def lowpay(balance, annualInterestRate):
-    currBalance = balance
-    fixedPay = 0
     
-    while balance > 0:
+    high = balance
+    low = 0
+
+    #while balance > 0:
+    while True:
+        fixedPay = (high + low)/2
+        epsilon = 0.01
         currBalance = balance
+        balancex = balance
         for i in range(12):
-            balance = balance - fixedPay
-            balance = balance + ((balance*annualInterestRate/12))
-        if balance > 0:
-            fixedPay += 0.01
-            balance = currBalance
-        else:
+            balancex = balancex - fixedPay
+            balancex = balancex + ((balancex*annualInterestRate/12))
+
+        if abs(balancex)<= epsilon:
             return round(fixedPay, 2)
+        elif balancex > 0: #guess is too little
+            low = fixedPay
+            
+            
+
+        elif balancex < 0: #guess is too much
+            high = fixedPay
 
 
-#This currently works but has no bisect search which is required
+
+
+#This currently works but its THE WORST CODE EVER 
 
 
 
